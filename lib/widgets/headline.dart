@@ -11,7 +11,7 @@ class HeadLine extends StatelessWidget {
         ),
       ),
       Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               gradient: LinearGradient(colors: [
         Colors.black87,
         Colors.transparent,
@@ -23,7 +23,7 @@ class HeadLine extends StatelessWidget {
         children: [
           Row(mainAxisAlignment: MainAxisAlignment.end, children: [
             Padding(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: Icon(
                 Icons.subdirectory_arrow_right_rounded,
                 color: Colors.white,
@@ -34,7 +34,7 @@ class HeadLine extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Expanded(
+              const Expanded(
                 child: Padding(
                   padding: EdgeInsets.all(10),
                   child: Text(

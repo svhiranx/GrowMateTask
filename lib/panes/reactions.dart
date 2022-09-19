@@ -97,11 +97,13 @@ class Reactions extends StatelessWidget {
           ],
         ),
         GestureDetector(
-            onTap: () => showModalBottomSheet(
-                context: context,
-                builder: (context) {
-                  return CommentModalSheet(commentList);
-                }),
+            onVerticalDragUpdate: (details) {
+              showModalBottomSheet(
+                  context: context,
+                  builder: (context) {
+                    return CommentModalSheet(commentList);
+                  });
+            },
             child: Column(children: [
               ...commentList.take(2).map(
                 (e) {

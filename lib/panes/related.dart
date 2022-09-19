@@ -24,26 +24,32 @@ class Related extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-      ...relatedNewsList.take(2).map(
-        (e) {
-          return RelatedNewsCard(e.thumbnailUrl, e.title);
-        },
-      ),
-      Container(
-        margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.7),
-        child: TextButton(
-          onPressed: () => showModalBottomSheet(
+    return GestureDetector(
+      onVerticalDragUpdate: (details) {
+        int sensitivity = 8;
+        if (details.delta.dy < -sensitivity) {
+          showModalBottomSheet(
               context: context,
               builder: (context) {
                 return RelatedModalSheet(relatedNewsList);
-              }),
+              });
+        }
+      },
+      child: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
+        ...relatedNewsList.take(2).map(
+          (e) {
+            return RelatedNewsCard(e.thumbnailUrl, e.title);
+          },
+        ),
+        Container(
+          padding:
+              EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.1),
           child: Text(
             'more...',
             style: Theme.of(context).textTheme.subtitle1,
           ),
-        ),
-      )
-    ]);
+        )
+      ]),
+    );
   }
 }
